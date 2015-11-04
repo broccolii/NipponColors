@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "ABAEFC32F65E925AF7ACEB84B35D3192A6320FF1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ABAEFC32F65E925AF7ACEB84B35D3192A6320FF1" : 0,
+    "2ADE6DD5FE3F220904FC8623C0EDE339BC93A3D6" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2EB7F985-6767-4D88-983E-19E1FF1FBE0B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ABAEFC32F65E925AF7ACEB84B35D3192A6320FF1" : "NipponColors\/",
+    "2ADE6DD5FE3F220904FC8623C0EDE339BC93A3D6" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ColorPicker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ColorPicker.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/broccolii\/LoadingView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2ADE6DD5FE3F220904FC8623C0EDE339BC93A3D6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/broccolii\/NipponColors.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ABAEFC32F65E925AF7ACEB84B35D3192A6320FF1"
+    }
+  ]
+}

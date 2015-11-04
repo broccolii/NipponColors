@@ -16,7 +16,6 @@
 		A47A86F21BE774AA009E1BD1 /* ColorPropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A86F11BE774AA009E1BD1 /* ColorPropertyTableViewController.swift */; };
 		A4C785091BE8827600AFAA42 /* DeepdeneBQ-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4C785081BE8827600AFAA42 /* DeepdeneBQ-Roman.otf */; };
 		A4C7850B1BE88CC100AFAA42 /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */; };
-		A4F9AD1D1BE8774700C21A4A /* A-OTF-A1MinchoStd-Bold.otf in Sources */ = {isa = PBXBuildFile; fileRef = A4FD41321BE8727300DC684E /* A-OTF-A1MinchoStd-Bold.otf */; };
 		A4F9AD211BE87B0000C21A4A /* HeiseiMinStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
 		A4EF7BB11BE8F67C00BF8CD2 /* ColorPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorPicker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HeiseiMinStd-W7.otf"; sourceTree = "<group>"; };
-		A4FD41321BE8727300DC684E /* A-OTF-A1MinchoStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-A1MinchoStd-Bold.otf"; sourceTree = "<group>"; };
 		B2B45DB5C3DC399D0EE77259 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD906FD78BFC043D138486C2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,7 +84,6 @@
 				A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */,
 				A47A86EF1BE76351009E1BD1 /* ColorListViewController.swift */,
 				A47A86F11BE774AA009E1BD1 /* ColorPropertyTableViewController.swift */,
-				A4FD41321BE8727300DC684E /* A-OTF-A1MinchoStd-Bold.otf */,
 				A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */,
 				A4C785081BE8827600AFAA42 /* DeepdeneBQ-Roman.otf */,
 				A47A86E41BE761C3009E1BD1 /* Assets.xcassets */,
@@ -214,7 +211,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4C7850B1BE88CC100AFAA42 /* ColorInfo.swift in Sources */,
-				A4F9AD1D1BE8774700C21A4A /* A-OTF-A1MinchoStd-Bold.otf in Sources */,
 				A47A86F01BE76351009E1BD1 /* ColorListViewController.swift in Sources */,
 				A47A86DE1BE761C3009E1BD1 /* AppDelegate.swift in Sources */,
 				A47A86F21BE774AA009E1BD1 /* ColorPropertyTableViewController.swift in Sources */,

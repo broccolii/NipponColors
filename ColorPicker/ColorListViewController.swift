@@ -49,7 +49,19 @@ extension ColorListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! ColorCollectionViewCell
         for view in cell.subviews {
             view.removeFromSuperview()
+            
         }
+        if let sublayer = cell.layer.sublayers {
+            for layer in sublayer {
+                layer.removeFromSuperlayer()
+            }
+        }
+      
+        
+        print(indexPath.row)
+        print(dataArr[indexPath.row].RValue)
+        print(dataArr[indexPath.row].GValue)
+        print(dataArr[indexPath.row].BValue)
         cell.colorInfo = dataArr[indexPath.row]
         return cell
     }
@@ -67,6 +79,8 @@ extension ColorListViewController: UICollectionViewDelegate {
         animation.duration = 3.0
         animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
         self.view.layer.pop_addAnimation(animation, forKey: nil)
+        
+        collectionView.reloadItemsAtIndexPaths([indexPath])
     }
 }
 
@@ -104,6 +118,8 @@ class ColorCollectionViewCell: UICollectionViewCell {
             createColorCount()
             createEnglishName()
             drawMaskLayer()
+            
+            beginAnimation()
         }
     }
     
@@ -112,57 +128,134 @@ class ColorCollectionViewCell: UICollectionViewCell {
     var lblCount: UILabel!
     var lblName: UILabel!
     
+    var lineLayer1: CAShapeLayer!
+    var lineLayer2: CAShapeLayer!
+    var lineLayer3: CAShapeLayer!
+    
+    var shapeLayer1: CAShapeLayer!
+    var shapeLayer2: CAShapeLayer!
+    var shapeLayer3: CAShapeLayer!
+    var shapeLayer4: CAShapeLayer!
+    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+    }
+    
+    private func beginAnimation() {
+        
+        let lineAnimation1 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        lineAnimation1.fromValue = 0.5
+        lineAnimation1.toValue = CGFloat(colorInfo.RValue) / 255.0 / 2.0
+        lineAnimation1.duration = 1.0
+        lineAnimation1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        lineLayer1.pop_addAnimation(lineAnimation1, forKey: "strokeEnd")
+        
+        let lineAnimation2 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        lineAnimation2.fromValue = 0.5
+        lineAnimation2.toValue = CGFloat(colorInfo.GValue) / 255.0 / 2.0
+        lineAnimation2.duration = 1.0
+         lineAnimation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        lineLayer2.pop_addAnimation(lineAnimation2, forKey: "strokeEnd")
+        
+        let lineAnimation3 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        lineAnimation3.fromValue = 0.5
+        lineAnimation3.toValue = CGFloat(colorInfo.BValue) / 255.0 / 2.0
+        lineAnimation3.duration = 1.0
+        lineAnimation3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        lineLayer3.pop_addAnimation(lineAnimation3, forKey: "strokeEnd")
+        
+        let animation1 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        animation1.fromValue = 1.0
+        animation1.toValue = CGFloat(colorInfo.CValue) / 100.0
+        animation1.duration = 3.0
+        animation1.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        shapeLayer1.pop_addAnimation(animation1, forKey: "shapeLayer1Animation")
+        
+        let animation2 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        animation2.fromValue = 1.0
+        animation2.toValue = CGFloat(colorInfo.MValue) / 100.0
+        animation2.duration = 3.0
+        animation2.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        shapeLayer2.pop_addAnimation(animation2, forKey: "shapeLayer2Animation")
+        
+        let animation3 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        animation3.fromValue = 1.0
+        animation3.toValue = CGFloat(colorInfo.YValue) / 100.0
+        animation3.duration = 3.0
+        animation3.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        shapeLayer3.pop_addAnimation(animation3, forKey: "shapeLayer3Animation")
+        
+        let animation4 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+        animation4.fromValue = 1.0
+        animation4.toValue = CGFloat(colorInfo.KValue) / 100.0
+        animation4.duration = 3.0
+        animation4.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        shapeLayer4.pop_addAnimation(animation4, forKey: "shapeLayer4Animation")
     }
     
     private func drawMaskLayer() {
-        let layer1 = CALayer()
-        layer1.frame = CGRect(x: 22, y: 195, width: 2, height: 165.0 * CGFloat(colorInfo.RValue) / 255.0)
-        layer1.backgroundColor = UIColor.whiteColor().CGColor
         
-        let layer2 = CALayer()
-        layer2.frame = CGRect(x: 27, y: 195, width: 2, height: 165.0 * CGFloat(colorInfo.GValue) / 255.0)
-        layer2.backgroundColor = UIColor.whiteColor().CGColor
+        let linePath1 = UIBezierPath()
+        linePath1.moveToPoint(CGPoint(x: 22, y: 195))
+        linePath1.addLineToPoint(CGPoint(x: 22, y: 360))
+        linePath1.closePath()
+        lineLayer1 = CAShapeLayer()
+        lineLayer1.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer1.lineWidth = 2.0
+        lineLayer1.path = linePath1.CGPath
+        layer.addSublayer(lineLayer1)
         
-        let layer3 = CALayer()
-        layer3.frame = CGRect(x: 32, y: 195, width: 2, height: 165.0 * CGFloat(colorInfo.BValue) / 255.0)
-        layer3.backgroundColor = UIColor.whiteColor().CGColor
+        let linePath2 = UIBezierPath()
+        linePath2.moveToPoint(CGPoint(x: 27, y: 195))
+        linePath2.addLineToPoint(CGPoint(x: 27, y: 360))
+        linePath2.closePath()
+        lineLayer2 = CAShapeLayer()
+        lineLayer2.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer2.lineWidth = 2.0
+        lineLayer2.path = linePath2.CGPath
+        layer.addSublayer(lineLayer2)
         
-        self.layer.addSublayer(layer1)
-        self.layer.addSublayer(layer2)
-        self.layer.addSublayer(layer3)
+        let linePath3 = UIBezierPath()
+        linePath3.moveToPoint(CGPoint(x: 32, y: 195))
+        linePath3.addLineToPoint(CGPoint(x: 32, y: 360))
+        linePath3.closePath()
+        lineLayer3 = CAShapeLayer()
+        lineLayer3.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer3.lineWidth = 2.0
+        lineLayer3.path = linePath3.CGPath
+        layer.addSublayer(lineLayer3)
         
-        let path1 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 39), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(-M_PI / 2) + CGFloat(colorInfo.CValue) / 100.0 * CGFloat(M_PI * 2), clockwise: true)
         
-        let shapeLayer1 = CAShapeLayer()
+        
+        let path1 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 39), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(M_PI * 3 / 2), clockwise: true)
+        shapeLayer1 = CAShapeLayer()
         shapeLayer1.strokeColor = UIColor.whiteColor().CGColor
         shapeLayer1.fillColor = UIColor.clearColor().CGColor
         shapeLayer1.path = path1.CGPath
         shapeLayer1.lineWidth = 8.0
         self.layer.addSublayer(shapeLayer1)
         
-        let path2 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 81), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(-M_PI / 2) + (CGFloat(colorInfo.MValue) / 100.0) * CGFloat(M_PI * 2), clockwise: true)
-        
-        let shapeLayer2 = CAShapeLayer()
+        let path2 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 81), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(M_PI * 3 / 2), clockwise: true)
+        shapeLayer2 = CAShapeLayer()
         shapeLayer2.strokeColor = UIColor.whiteColor().CGColor
         shapeLayer2.fillColor = UIColor.clearColor().CGColor
         shapeLayer2.path = path2.CGPath
         shapeLayer2.lineWidth = 8.0
         self.layer.addSublayer(shapeLayer2)
         
-        let path3 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 123), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(-M_PI / 2) + (CGFloat(colorInfo.YValue) / 100.0) * CGFloat(M_PI * 2), clockwise: true)
-        
-        let shapeLayer3 = CAShapeLayer()
+        let path3 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 123), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(M_PI * 3 / 2), clockwise: true)
+        shapeLayer3 = CAShapeLayer()
         shapeLayer3.strokeColor = UIColor.whiteColor().CGColor
         shapeLayer3.fillColor = UIColor.clearColor().CGColor
         shapeLayer3.path = path3.CGPath
         shapeLayer3.lineWidth = 8.0
         self.layer.addSublayer(shapeLayer3)
         
-        let path4 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 165), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(-M_PI / 2) + (CGFloat(colorInfo.MValue) / 100.0) * CGFloat(M_PI * 2), clockwise: true)
-        
-        let shapeLayer4 = CAShapeLayer()
+        let path4 = UIBezierPath(arcCenter: CGPoint(x: 18, y: 165), radius: 12, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(M_PI * 3 / 2), clockwise: true)
+        shapeLayer4 = CAShapeLayer()
         shapeLayer4.strokeColor = UIColor.whiteColor().CGColor
         shapeLayer4.fillColor = UIColor.clearColor().CGColor
         shapeLayer4.path = path4.CGPath

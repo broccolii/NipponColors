@@ -176,8 +176,6 @@ class CMYKTableViewCell: UITableViewCell {
         CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.4)
         CGContextAddArc(ctx, 30, 35, 20, 0, CGFloat(2 * M_PI), 0)
         CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
-        
-        
     }
     
     private func createLblValue() {
