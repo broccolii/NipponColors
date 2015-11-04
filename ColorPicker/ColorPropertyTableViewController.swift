@@ -15,6 +15,7 @@ class ColorPropertyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         NSNotificationCenter.defaultCenter().addObserverForName("kChangeColorProperty", object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
@@ -142,7 +143,7 @@ class CMYKTableViewCell: UITableViewCell {
             animation.fromValue = Int(lblValue.text!)
         }
         animation.toValue = newValue
-        animation.duration = 1.0
+        animation.duration = 1.8
         animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
         lblValue.pop_addAnimation(animation, forKey: "labelValueAnimation")
     }
@@ -153,7 +154,7 @@ class CMYKTableViewCell: UITableViewCell {
         let path = UIBezierPath(arcCenter: CGPoint(x: 30, y: 35), radius: 20, startAngle: CGFloat(-M_PI / 2), endAngle: CGFloat(-M_PI / 2) + CGFloat(M_PI * 2), clockwise: true)
         
         shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor.darkGrayColor().CGColor
+        shapeLayer.strokeColor = UIColor(white: 1.0, alpha: 0.9).CGColor
         shapeLayer.fillColor = UIColor.clearColor().CGColor
         shapeLayer.path = path.CGPath
         shapeLayer.lineWidth = 2.0
@@ -182,7 +183,7 @@ class CMYKTableViewCell: UITableViewCell {
         lblValue = UILabel(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         lblValue.center = CGPoint(x: 30, y: 35)
         lblValue.textAlignment = NSTextAlignment.Center
-        lblValue.textColor = UIColor.whiteColor()
+        lblValue.textColor = UIColor(white: 1.0, alpha: 0.9)
         lblValue.font = UIFont.systemFontOfSize(20)
         self.addSubview(lblValue)
     }
@@ -197,9 +198,34 @@ class RGBTableViewCell: UITableViewCell {
     // cell heigt = 40
     
     var colorValue: Int! {
-        didSet {
-            lblRGBValue.text = "\(colorValue)"
+        set {
+            labelValueAnimation(Int(newValue!))
         }
+        get {
+            return nil
+        }
+    }
+    
+    private func labelValueAnimation(newValue: Int) {
+        
+        let animation = POPBasicAnimation()
+        animation.property = POPMutableAnimatableProperty.propertyWithName("labelValue", initializer: { (prop) -> Void in
+            prop.writeBlock = {
+                (obj, values) in
+                let lbl = obj as! UILabel
+                let num = Int(values[0])
+                lbl.text = "\(num)"
+            }
+        }) as! POPAnimatableProperty
+        if lblRGBValue.text == nil {
+            animation.fromValue = 0
+        } else {
+            animation.fromValue = Int(lblRGBValue.text!)
+        }
+        animation.toValue = newValue
+        animation.duration = 1.8
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        lblRGBValue.pop_addAnimation(animation, forKey: "labelValueAnimation")
     }
     
     override func drawRect(rect: CGRect) {

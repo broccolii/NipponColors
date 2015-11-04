@@ -18,22 +18,31 @@ class ColorListViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
+    override func loadView() {
+        super.loadView()
+        let path = NSBundle.mainBundle().pathForResource("数据", ofType: nil)
+        let data =  NSData(contentsOfFile: path!)
+        
+        do {
+            let jsonArr = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! Array<[String: String]>
+            
+            for (index, value) in jsonArr.enumerate() {
+                dataArr.append(ColorInfo.dicToModel(value, index: index))
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.view.backgroundColor = UIColor(red: 225 / 255.0, green: 107 / 255.0, blue: 140 / 255.0, alpha: 1)
-        
+        view.backgroundColor = UIColor(red: CGFloat(dataArr[0].RValue) / 255.0, green: CGFloat(dataArr[0].GValue) / 255.0, blue: CGFloat(dataArr[0].BValue) / 255.0, alpha: 1.0)
         lblColorName.text = dataArr[0].colorName
-        lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 36.0)
+        lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 43.0)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ColorPropertyTableViewController" {
             let VC = segue.destinationViewController as! ColorPropertyTableViewController
-            for _ in 0 ..< 250 {
-                dataArr.append(ColorInfo.randomInit())
-            }
             VC.colorInfo = dataArr[0]
         }
     }
@@ -57,11 +66,6 @@ extension ColorListViewController: UICollectionViewDataSource {
             }
         }
       
-        
-        print(indexPath.row)
-        print(dataArr[indexPath.row].RValue)
-        print(dataArr[indexPath.row].GValue)
-        print(dataArr[indexPath.row].BValue)
         cell.colorInfo = dataArr[indexPath.row]
         return cell
     }
@@ -69,15 +73,27 @@ extension ColorListViewController: UICollectionViewDataSource {
 
 extension ColorListViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // TODO: 动画 动画 动画
-        NSNotificationCenter.defaultCenter().postNotificationName("kChangeColorProperty", object: nil, userInfo: ["colorInfo" : dataArr[indexPath.row]])
-        lblColorName.text = dataArr[indexPath.row].colorName
+//        lblColorName.text = dataArr[indexPath.row].colorName
+        
+        UIView.animateWithDuration(1.2, animations: { () -> Void in
+            self.lblColorName.alpha = 0.0
+            }) { (finish) -> Void in
+                self.lblColorName.text = self.dataArr[indexPath.row].colorName
+                UIView.animateWithDuration(1.8, animations: { () -> Void in
+                    self.lblColorName.alpha = 1.0
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("kChangeColorProperty", object: nil, userInfo: ["colorInfo" : self.dataArr[indexPath.row]])
+                })
+        }
+        
+        
         
         // 动画修改颜色
         let animation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
         animation.toValue = UIColor(red: CGFloat(dataArr[indexPath.row].RValue) / 255.0, green: CGFloat(dataArr[indexPath.row].GValue) / 255.0, blue: CGFloat(dataArr[indexPath.row].BValue) / 255.0, alpha: 1.0)
-        animation.duration = 3.0
-        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+//        animation.toValue = UIColor(red: 144 / 255.0, green: 72 / 255.0, blue: 64 / 255.0, alpha: 1.0)
+        animation.duration = 2.5
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.view.layer.pop_addAnimation(animation, forKey: nil)
         
         collectionView.reloadItemsAtIndexPaths([indexPath])
@@ -203,7 +219,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         linePath1.addLineToPoint(CGPoint(x: 22, y: 360))
         linePath1.closePath()
         lineLayer1 = CAShapeLayer()
-        lineLayer1.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer1.strokeColor = UIColor(white: 1.0, alpha: 0.7).CGColor
         lineLayer1.lineWidth = 2.0
         lineLayer1.path = linePath1.CGPath
         layer.addSublayer(lineLayer1)
@@ -213,7 +229,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         linePath2.addLineToPoint(CGPoint(x: 27, y: 360))
         linePath2.closePath()
         lineLayer2 = CAShapeLayer()
-        lineLayer2.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer2.strokeColor = UIColor(white: 1.0, alpha: 0.7).CGColor
         lineLayer2.lineWidth = 2.0
         lineLayer2.path = linePath2.CGPath
         layer.addSublayer(lineLayer2)
@@ -223,7 +239,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         linePath3.addLineToPoint(CGPoint(x: 32, y: 360))
         linePath3.closePath()
         lineLayer3 = CAShapeLayer()
-        lineLayer3.strokeColor = UIColor.whiteColor().CGColor
+        lineLayer3.strokeColor = UIColor(white: 1.0, alpha: 0.7).CGColor
         lineLayer3.lineWidth = 2.0
         lineLayer3.path = linePath3.CGPath
         layer.addSublayer(lineLayer3)
@@ -261,13 +277,19 @@ class ColorCollectionViewCell: UICollectionViewCell {
         shapeLayer4.path = path4.CGPath
         shapeLayer4.lineWidth = 8.0
         self.layer.addSublayer(shapeLayer4)
+        
+        // draw color view
+        let colorView = CALayer()
+        colorView.frame = CGRect(x: 0, y: 0, width: 60, height: 8)
+        colorView.backgroundColor = UIColor(red: CGFloat(colorInfo.RValue) / 255.0, green: CGFloat(colorInfo.GValue) / 255.0, blue: CGFloat(colorInfo.BValue) / 255.0, alpha: 1.0).CGColor
+        self.layer.addSublayer(colorView)
     }
     
     // 创建 颜色 英文名
     private func createEnglishName() {
         lblEN = UILabel(frame: CGRect(x: 60 - 17, y: 195 + 17, width: 165, height: 17))
         lblEN.font = UIFont(name: "DeepdeneBQ-Roman", size: 17.0)
-        lblEN.textColor = UIColor.whiteColor()
+        lblEN.textColor = UIColor(white: 1.0, alpha: 0.9)
         lblEN.text = colorInfo.colorEN
         lblEN.layer.anchorPoint = CGPoint(x: 0, y: 1)
         lblEN.layer.position = CGPoint(x: 60 - 17, y: 195)
@@ -279,7 +301,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     private func createRBGValue() {
         lblRGB = UILabel(frame: CGRect(x: 0, y: 195 + 9, width: 55, height: 11))
         lblRGB.font = UIFont.systemFontOfSize(11.0)
-        lblRGB.textColor = UIColor.whiteColor()
+        lblRGB.textColor = UIColor(white: 1.0, alpha: 0.9)
         lblRGB.text = colorInfo.RBGHexValue
         lblRGB.layer.anchorPoint = CGPoint(x: 0, y: 1)
         lblRGB.layer.position = CGPoint(x: 0, y: 195)
@@ -291,7 +313,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     private func createColorCount() {
         lblCount = UILabel(frame: CGRect(x: 60, y: 23, width: 30, height: 13))
         lblCount.font = UIFont.systemFontOfSize(13.0)
-        lblCount.textColor = UIColor.whiteColor()
+        lblCount.textColor = UIColor(red: CGFloat(colorInfo.RValue) / 255.0, green: CGFloat(colorInfo.GValue) / 255.0, blue: CGFloat(colorInfo.BValue) / 255.0, alpha: 1.0)
         lblCount.text = colorInfo.colorCount
         lblCount.layer.anchorPoint = CGPoint(x: 0, y: 0)
         lblCount.layer.position = CGPoint(x: 60, y: 23)
@@ -302,7 +324,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     // 创建 颜色 中文名
     private func createColorName() {
         lblName = UILabel(fontname: "HeiseiMinStd-W7", labelText: colorInfo.colorName, fontSize: 17.0)
-        lblName.textColor = UIColor.whiteColor()
+        lblName.textColor = UIColor(white: 1.0, alpha: 0.9)
         lblName.frame = CGRect(x: 60 - CGRectGetWidth(lblName.bounds), y: 180 - CGRectGetHeight(lblName.bounds), width: CGRectGetWidth(lblName.bounds), height: CGRectGetHeight(lblName.bounds))
         self.addSubview(lblName)
     }
@@ -311,13 +333,10 @@ class ColorCollectionViewCell: UICollectionViewCell {
         super.drawRect(rect)
         
         let ctx = UIGraphicsGetCurrentContext()
-        // draw color view
-        CGContextSetRGBFillColor(ctx, CGFloat(colorInfo.RValue) / 255.0, CGFloat(colorInfo.GValue) / 255.0, CGFloat(colorInfo.BValue) / 255.0, 0.5)
-        CGContextFillRect(ctx, CGRect(x: 0, y: 0, width: 60, height: 8))
         
         // draw base white circle
         CGContextSetLineWidth(ctx, 8)
-        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.6)
+        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.2)
 
         CGContextAddArc(ctx, 18, 39, 12, 0, CGFloat(2 * M_PI), 0)
         CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
@@ -333,7 +352,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         
         // RGB 数值 线
         CGContextSetLineWidth(ctx, 2)
-        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.4)
+        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.2)
         
         let pointsValue1 = [CGPoint(x: 22, y: 195), CGPoint(x: 22, y: 360)]
         CGContextAddLines(ctx, pointsValue1, 2)
@@ -344,6 +363,8 @@ class ColorCollectionViewCell: UICollectionViewCell {
         let pointsValue3 = [CGPoint(x: 32, y: 195), CGPoint(x: 32, y: 360)]
         CGContextAddLines(ctx, pointsValue3, 2)
         CGContextStrokePath(ctx)
+        
+        
     }
 }
 

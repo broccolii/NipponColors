@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04F47A4592DCD2EA26C07373 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD906FD78BFC043D138486C2 /* libPods.a */; };
+		A47133D31BEA55EF00FCA2FC /* 数据 in Resources */ = {isa = PBXBuildFile; fileRef = A47133D21BEA55EF00FCA2FC /* 数据 */; };
 		A47A86DE1BE761C3009E1BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */; };
 		A47A86E31BE761C3009E1BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E11BE761C3009E1BD1 /* Main.storyboard */; };
 		A47A86E51BE761C3009E1BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E41BE761C3009E1BD1 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1442F9285036263864DAEBF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A47133D21BEA55EF00FCA2FC /* 数据 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "数据"; sourceTree = "<group>"; };
 		A47A86DA1BE761C3009E1BD1 /* ColorPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A47A86E21BE761C3009E1BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		A47A86DC1BE761C3009E1BD1 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				A47133D21BEA55EF00FCA2FC /* 数据 */,
 				A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */,
 				A47A86E11BE761C3009E1BD1 /* Main.storyboard */,
 				A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */,
@@ -162,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A47133D31BEA55EF00FCA2FC /* 数据 in Resources */,
 				A47A86E81BE761C3009E1BD1 /* LaunchScreen.storyboard in Resources */,
 				A4C785091BE8827600AFAA42 /* DeepdeneBQ-Roman.otf in Resources */,
 				A47A86E51BE761C3009E1BD1 /* Assets.xcassets in Resources */,
