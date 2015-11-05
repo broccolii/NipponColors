@@ -127,12 +127,6 @@ class ColorInfo {
     }
     
     class func formatColorCount(count: Int) -> String {
-        if count < 9 {
-            return "00\(count + 1)"
-        } else if count < 98 {
-            return "0\(count + 1)"
-        } else {
-            return "\(count + 1)"
-        }
+       return String(format: "%03d", count + 1)
     }
 }

@@ -139,6 +139,7 @@
 				TargetAttributes = {
 					A47A86D91BE761C3009E1BD1 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 56AD4GF63S;
 					};
 				};
 			};
@@ -282,6 +283,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1381f79e-ca63-4b99-a68b-5643ceb80f5a";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,7 +307,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen aiuyi health Management Co., Ltd (YKSTK56XPJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen aiuyi health Management Co., Ltd (YKSTK56XPJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -320,6 +323,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "1381f79e-ca63-4b99-a68b-5643ceb80f5a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -331,11 +335,13 @@
 			baseConfigurationReference = B2B45DB5C3DC399D0EE77259 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yan Wang (D794PDW38U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yan Wang (D794PDW38U)";
 				INFOPLIST_FILE = ColorPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Broccoli.ColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a133750c-9bff-4cb9-8ba7-46ffda5abba6";
+				PROVISIONING_PROFILE = "1381f79e-ca63-4b99-a68b-5643ceb80f5a";
 				SWIFT_OBJC_BRIDGING_HEADER = "ColorPicker/ColorPicker-Bridging-Header.h";
 			};
 			name = Debug;
@@ -345,11 +351,13 @@
 			baseConfigurationReference = 1442F9285036263864DAEBF6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen aiuyi health Management Co., Ltd (YKSTK56XPJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen aiuyi health Management Co., Ltd (YKSTK56XPJ)";
 				INFOPLIST_FILE = ColorPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Broccoli.ColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a133750c-9bff-4cb9-8ba7-46ffda5abba6";
+				PROVISIONING_PROFILE = "1381f79e-ca63-4b99-a68b-5643ceb80f5a";
 				SWIFT_OBJC_BRIDGING_HEADER = "ColorPicker/ColorPicker-Bridging-Header.h";
 			};
 			name = Release;

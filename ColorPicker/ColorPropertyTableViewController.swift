@@ -180,11 +180,11 @@ class CMYKTableViewCell: UITableViewCell {
     }
     
     private func createLblValue() {
-        lblValue = UILabel(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        lblValue = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         lblValue.center = CGPoint(x: 30, y: 35)
         lblValue.textAlignment = NSTextAlignment.Center
         lblValue.textColor = UIColor(white: 1.0, alpha: 0.9)
-        lblValue.font = UIFont.systemFontOfSize(20)
+        lblValue.font = UIFont.systemFontOfSize(18)
         self.addSubview(lblValue)
     }
 }
