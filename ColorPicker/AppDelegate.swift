@@ -15,6 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+//        let launchVC = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewControllerWithIdentifier("LaunchScreen")
+//        let launchView = launchVC.view
+//        UIApplication.sharedApplication().delegate!.window!!.addSubview(launchView)
+//        
+//        UIView.animateWithDuration(2.0, animations: { () -> Void in
+//            launchView.alpha = 0.0
+//            launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.3, 1.3, 1.0)
+//            }) { (finished) -> Void in
+//                launchView.removeFromSuperview()
+//        }
+        
         return true
     }
 

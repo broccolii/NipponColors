@@ -9,7 +9,7 @@
 import UIKit
 
 class ColorListViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblColorName: UILabel!
     
@@ -18,6 +18,7 @@ class ColorListViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
     override func loadView() {
         super.loadView()
         let path = NSBundle.mainBundle().pathForResource("数据", ofType: nil)
@@ -33,12 +34,48 @@ class ColorListViewController: UIViewController {
             print(error)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateViewControllerWithIdentifier:@"LaunchScreen"];
+        //
+        //        UIView *launchView = viewController.view;
+        //        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        //        UIWindow *mainWindow = delegate.window;
+        //        [mainWindow addSubview:launchView];
+        //
+        //        [UIView animateWithDuration:2.0f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        //        launchView.alpha = 0.0f;
+        //        launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.3f, 1.3f, 1.0f);
+        //        } completion:^(BOOL finished) {
+        //        [launchView removeFromSuperview];
+        //        }];
+        
+        
+        let VC = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewControllerWithIdentifier("LaunchScreen")
+        let launchView = VC.view
+        let mainWindow = UIApplication.sharedApplication().delegate?.window!!
+        mainWindow!.addSubview(launchView)
+        
+        UIView.animateWithDuration(2.0, animations: { () -> Void in
+            launchView.alpha = 0.0
+            launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.3, 1.3, 1.0)
+            }) { (finished) -> Void in
+                launchView.removeFromSuperview()
+        }
+        
         view.backgroundColor = UIColor(red: CGFloat(dataArr[0].RValue) / 255.0, green: CGFloat(dataArr[0].GValue) / 255.0, blue: CGFloat(dataArr[0].BValue) / 255.0, alpha: 1.0)
         lblColorName.text = dataArr[0].colorName
         lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 43.0)
+        
+        let overLayer = UIImageView()
+        overLayer.frame = UIScreen.mainScreen().bounds
+        overLayer.image = UIImage(named: "blurLayer")
+        overLayer.alpha = 0.4
+        view.insertSubview(overLayer, aboveSubview: lblColorName)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ColorPropertyTableViewController" {
@@ -65,7 +102,7 @@ extension ColorListViewController: UICollectionViewDataSource {
                 layer.removeFromSuperlayer()
             }
         }
-      
+        
         cell.colorInfo = dataArr[indexPath.row]
         return cell
     }
@@ -73,7 +110,7 @@ extension ColorListViewController: UICollectionViewDataSource {
 
 extension ColorListViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        lblColorName.text = dataArr[indexPath.row].colorName
+        //        lblColorName.text = dataArr[indexPath.row].colorName
         
         UIView.animateWithDuration(1.2, animations: { () -> Void in
             self.lblColorName.alpha = 0.0
@@ -91,7 +128,7 @@ extension ColorListViewController: UICollectionViewDelegate {
         // 动画修改颜色
         let animation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
         animation.toValue = UIColor(red: CGFloat(dataArr[indexPath.row].RValue) / 255.0, green: CGFloat(dataArr[indexPath.row].GValue) / 255.0, blue: CGFloat(dataArr[indexPath.row].BValue) / 255.0, alpha: 1.0)
-//        animation.toValue = UIColor(red: 144 / 255.0, green: 72 / 255.0, blue: 64 / 255.0, alpha: 1.0)
+        //        animation.toValue = UIColor(red: 144 / 255.0, green: 72 / 255.0, blue: 64 / 255.0, alpha: 1.0)
         animation.duration = 2.5
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.view.layer.pop_addAnimation(animation, forKey: nil)
@@ -153,7 +190,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     var shapeLayer3: CAShapeLayer!
     var shapeLayer4: CAShapeLayer!
     
-  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -173,7 +210,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         lineAnimation2.fromValue = 0.5
         lineAnimation2.toValue = CGFloat(colorInfo.GValue) / 255.0 / 2.0
         lineAnimation2.duration = 1.0
-         lineAnimation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        lineAnimation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         lineLayer2.pop_addAnimation(lineAnimation2, forKey: "strokeEnd")
         
         let lineAnimation3 = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
@@ -337,7 +374,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         // draw base white circle
         CGContextSetLineWidth(ctx, 8)
         CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.2)
-
+        
         CGContextAddArc(ctx, 18, 39, 12, 0, CGFloat(2 * M_PI), 0)
         CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
         
