@@ -14,7 +14,7 @@
 		A47A86E81BE761C3009E1BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E61BE761C3009E1BD1 /* LaunchScreen.storyboard */; };
 		A49F57141BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */; };
 		A49F57151BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */; };
-		A49F57171BFD6B75007E4EEB /* 数据 in Resources */ = {isa = PBXBuildFile; fileRef = A49F57161BFD6B75007E4EEB /* 数据 */; };
+		A49F57171BFD6B75007E4EEB /* ColorInfoData in Resources */ = {isa = PBXBuildFile; fileRef = A49F57161BFD6B75007E4EEB /* ColorInfoData */; };
 		A49F571B1BFD6BBC007E4EEB /* ColorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F57191BFD6BBC007E4EEB /* ColorListViewController.swift */; };
 		A49F571C1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F571A1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift */; };
 		A49F571F1BFD6C3B007E4EEB /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F571E1BFD6C3B007E4EEB /* ColorInfo.swift */; };
@@ -30,7 +30,7 @@
 		A47A86E91BE761C3009E1BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DeepdeneBQ-Roman.otf"; sourceTree = "<group>"; };
 		A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HeiseiMinStd-W7.otf"; sourceTree = "<group>"; };
-		A49F57161BFD6B75007E4EEB /* 数据 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "数据"; sourceTree = "<group>"; };
+		A49F57161BFD6B75007E4EEB /* ColorInfoData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColorInfoData; sourceTree = "<group>"; };
 		A49F57191BFD6BBC007E4EEB /* ColorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorListViewController.swift; sourceTree = "<group>"; };
 		A49F571A1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPropertyTableViewController.swift; sourceTree = "<group>"; };
 		A49F571E1BFD6C3B007E4EEB /* ColorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		A49F57111BFD6B5C007E4EEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A49F57161BFD6B75007E4EEB /* 数据 */,
+				A49F57161BFD6B75007E4EEB /* ColorInfoData */,
 				A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */,
 				A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */,
 			);
@@ -192,7 +192,7 @@
 			files = (
 				A49F57141BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf in Resources */,
 				A47A86E81BE761C3009E1BD1 /* LaunchScreen.storyboard in Resources */,
-				A49F57171BFD6B75007E4EEB /* 数据 in Resources */,
+				A49F57171BFD6B75007E4EEB /* ColorInfoData in Resources */,
 				A49F57151BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf in Resources */,
 				A47A86E51BE761C3009E1BD1 /* Assets.xcassets in Resources */,
 				A47A86E31BE761C3009E1BD1 /* Main.storyboard in Resources */,

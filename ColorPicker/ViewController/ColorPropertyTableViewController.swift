@@ -15,7 +15,6 @@ class ColorPropertyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         NSNotificationCenter.defaultCenter().addObserverForName("kChangeColorProperty", object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
@@ -28,7 +27,7 @@ class ColorPropertyTableViewController: UITableViewController {
 // MARK: - Table view data source
 private let CMYKCellIdentifier = "CMYKTableViewCell"
 private let RGBCellIdentifier = "RGBTableViewCell"
-
+// TODO: - 这里我犯蠢了应该 统一成一个 cell 的 可以省很多代码
 extension ColorPropertyTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,43 +108,17 @@ class CMYKTableViewCell: UITableViewCell {
         }
     }
     
-    // cell width = 60
-    // cell heigt = 60
-    
     var index: Int!
     var lblValue: UILabel!
     var shapeLayer: CAShapeLayer!
     
     private func circleAnimation(newValue: Int, oldValue: Int) {
-        
         let animation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
         animation.fromValue = CGFloat(oldValue) / 100.0
         animation.toValue = CGFloat(newValue) / 100.0
         animation.duration = 1.0
         animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
         shapeLayer.pop_addAnimation(animation, forKey: "circleAnimation")
-    }
-    
-    private func labelValueAnimation(newValue: Int) {
-        
-        let animation = POPBasicAnimation()
-        animation.property = POPMutableAnimatableProperty.propertyWithName("labelValue", initializer: { (prop) -> Void in
-            prop.writeBlock = {
-            (obj, values) in
-                let lbl = obj as! UILabel
-                let num = Int(values[0])
-                lbl.text = "\(num)"
-            }
-        }) as! POPAnimatableProperty
-        if lblValue.text == nil {
-             animation.fromValue = 0
-        } else {
-            animation.fromValue = Int(lblValue.text!)
-        }
-        animation.toValue = newValue
-        animation.duration = 1.8
-        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
-        lblValue.pop_addAnimation(animation, forKey: "labelValueAnimation")
     }
     
     override func awakeFromNib() {
@@ -187,15 +160,34 @@ class CMYKTableViewCell: UITableViewCell {
         lblValue.font = UIFont.systemFontOfSize(18)
         self.addSubview(lblValue)
     }
+    
+    private func labelValueAnimation(newValue: Int) {
+        
+        let animation = POPBasicAnimation()
+        animation.property = POPMutableAnimatableProperty.propertyWithName("labelValue", initializer: { (prop) -> Void in
+            prop.writeBlock = {
+                (obj, values) in
+                let lbl = obj as! UILabel
+                let num = Int(values[0])
+                lbl.text = "\(num)"
+            }
+        }) as! POPAnimatableProperty
+        if lblValue.text == nil {
+            animation.fromValue = 0
+        } else {
+            animation.fromValue = Int(lblValue.text!)
+        }
+        animation.toValue = newValue
+        animation.duration = 1.8
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
+        lblValue.pop_addAnimation(animation, forKey: "labelValueAnimation")
+    }
 }
 
 class RGBTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblRGB: UILabel!
     @IBOutlet weak var lblRGBValue: UILabel!
-    
-    // cell width = 60
-    // cell heigt = 40
     
     var colorValue: Int! {
         set {
@@ -206,8 +198,19 @@ class RGBTableViewCell: UITableViewCell {
         }
     }
     
-    private func labelValueAnimation(newValue: Int) {
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
         
+        // draw line
+        let ctx = UIGraphicsGetCurrentContext()
+        CGContextSetLineWidth(ctx, 2)
+        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.6)
+        let pointsTop = [CGPoint(x: 10, y: 0), CGPoint(x: 50, y: 0)]
+        CGContextAddLines(ctx, pointsTop, 2)
+        CGContextStrokePath(ctx)
+    }
+    
+    private func labelValueAnimation(newValue: Int) {
         let animation = POPBasicAnimation()
         animation.property = POPMutableAnimatableProperty.propertyWithName("labelValue", initializer: { (prop) -> Void in
             prop.writeBlock = {
@@ -227,27 +230,4 @@ class RGBTableViewCell: UITableViewCell {
         animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.12, 1, 0.11, 0.94)
         lblRGBValue.pop_addAnimation(animation, forKey: "labelValueAnimation")
     }
-    
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        
-        // draw line
-        let ctx = UIGraphicsGetCurrentContext()
-        CGContextSetLineWidth(ctx, 2)
-        CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 0.6)
-        let pointsTop = [CGPoint(x: 10, y: 0), CGPoint(x: 50, y: 0)]
-        CGContextAddLines(ctx, pointsTop, 2)
-        CGContextStrokePath(ctx)
-        
-    }
 }
-
-// TODO :
-// 1. 右上角 文本 显示
-// 2. 背景色演示的 time function 的贝塞尔曲线
-// 3. RBG 数值动画
-// 4. 做旧 遮罩
-// 5. CollectionView Layout
-// 6. 代码重构
-// 7. CMYK circle 不能从0开始
-// 待定
