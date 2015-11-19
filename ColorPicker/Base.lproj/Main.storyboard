@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Color List View Controller-->
@@ -74,18 +74,20 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pYm-jU-YzI" secondAttribute="trailing" constant="10" id="AY9-80-rEY"/>
                             <constraint firstItem="kAM-Cp-e6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Nrg-oT-yg9"/>
+                            <constraint firstItem="pYm-jU-YzI" firstAttribute="centerX" secondItem="Oei-pd-T3Q" secondAttribute="centerX" id="OBn-az-Xd9"/>
                             <constraint firstItem="pYm-jU-YzI" firstAttribute="leading" secondItem="kAM-Cp-e6K" secondAttribute="trailing" constant="10" id="PM5-E5-wrM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kAM-Cp-e6K" secondAttribute="bottom" id="W64-c4-a7N"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pYm-jU-YzI" secondAttribute="bottom" constant="15" id="Zfe-zT-sL9"/>
-                            <constraint firstAttribute="trailing" secondItem="Oei-pd-T3Q" secondAttribute="trailing" constant="5" id="hSH-lT-mht"/>
                             <constraint firstItem="kAM-Cp-e6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oRX-0f-6fr"/>
-                            <constraint firstItem="Oei-pd-T3Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="pWw-0c-BRa"/>
                             <constraint firstItem="Oei-pd-T3Q" firstAttribute="leading" secondItem="kAM-Cp-e6K" secondAttribute="trailing" constant="5" id="qkc-02-0LD"/>
+                            <constraint firstItem="pYm-jU-YzI" firstAttribute="top" secondItem="Oei-pd-T3Q" secondAttribute="bottom" id="zuk-bB-58x"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="kAM-Cp-e6K" id="TpH-WF-I0p"/>
+                        <outlet property="lblBottomConstraint" destination="zuk-bB-58x" id="Hws-Re-eV2"/>
                         <outlet property="lblColorName" destination="Oei-pd-T3Q" id="Xr7-He-QzG"/>
+                        <outlet property="lblWidthConstraint" destination="nWG-oJ-TA4" id="Yls-uF-un2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

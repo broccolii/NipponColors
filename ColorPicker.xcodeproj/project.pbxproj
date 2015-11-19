@@ -8,33 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		04F47A4592DCD2EA26C07373 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD906FD78BFC043D138486C2 /* libPods.a */; };
-		A47133D31BEA55EF00FCA2FC /* 数据 in Resources */ = {isa = PBXBuildFile; fileRef = A47133D21BEA55EF00FCA2FC /* 数据 */; };
 		A47A86DE1BE761C3009E1BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */; };
 		A47A86E31BE761C3009E1BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E11BE761C3009E1BD1 /* Main.storyboard */; };
 		A47A86E51BE761C3009E1BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E41BE761C3009E1BD1 /* Assets.xcassets */; };
 		A47A86E81BE761C3009E1BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47A86E61BE761C3009E1BD1 /* LaunchScreen.storyboard */; };
-		A47A86F01BE76351009E1BD1 /* ColorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A86EF1BE76351009E1BD1 /* ColorListViewController.swift */; };
-		A47A86F21BE774AA009E1BD1 /* ColorPropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A86F11BE774AA009E1BD1 /* ColorPropertyTableViewController.swift */; };
-		A4C785091BE8827600AFAA42 /* DeepdeneBQ-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4C785081BE8827600AFAA42 /* DeepdeneBQ-Roman.otf */; };
-		A4C7850B1BE88CC100AFAA42 /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */; };
-		A4F9AD211BE87B0000C21A4A /* HeiseiMinStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */; };
+		A49F57141BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */; };
+		A49F57151BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */; };
+		A49F57171BFD6B75007E4EEB /* 数据 in Resources */ = {isa = PBXBuildFile; fileRef = A49F57161BFD6B75007E4EEB /* 数据 */; };
+		A49F571B1BFD6BBC007E4EEB /* ColorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F57191BFD6BBC007E4EEB /* ColorListViewController.swift */; };
+		A49F571C1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F571A1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift */; };
+		A49F571F1BFD6C3B007E4EEB /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49F571E1BFD6C3B007E4EEB /* ColorInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1442F9285036263864DAEBF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A47133D21BEA55EF00FCA2FC /* 数据 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "数据"; sourceTree = "<group>"; };
 		A47A86DA1BE761C3009E1BD1 /* ColorPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A47A86E21BE761C3009E1BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A47A86E41BE761C3009E1BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A47A86E71BE761C3009E1BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A47A86E91BE761C3009E1BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A47A86EF1BE76351009E1BD1 /* ColorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorListViewController.swift; sourceTree = "<group>"; };
-		A47A86F11BE774AA009E1BD1 /* ColorPropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPropertyTableViewController.swift; sourceTree = "<group>"; };
-		A4C785081BE8827600AFAA42 /* DeepdeneBQ-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DeepdeneBQ-Roman.otf"; sourceTree = "<group>"; };
-		A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
+		A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DeepdeneBQ-Roman.otf"; sourceTree = "<group>"; };
+		A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HeiseiMinStd-W7.otf"; sourceTree = "<group>"; };
+		A49F57161BFD6B75007E4EEB /* 数据 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "数据"; sourceTree = "<group>"; };
+		A49F57191BFD6BBC007E4EEB /* ColorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorListViewController.swift; sourceTree = "<group>"; };
+		A49F571A1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPropertyTableViewController.swift; sourceTree = "<group>"; };
+		A49F571E1BFD6C3B007E4EEB /* ColorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
 		A4EF7BB11BE8F67C00BF8CD2 /* ColorPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorPicker-Bridging-Header.h"; sourceTree = "<group>"; };
-		A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HeiseiMinStd-W7.otf"; sourceTree = "<group>"; };
 		B2B45DB5C3DC399D0EE77259 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD906FD78BFC043D138486C2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,20 +81,44 @@
 		A47A86DC1BE761C3009E1BD1 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				A47133D21BEA55EF00FCA2FC /* 数据 */,
 				A47A86DD1BE761C3009E1BD1 /* AppDelegate.swift */,
 				A47A86E11BE761C3009E1BD1 /* Main.storyboard */,
-				A4C7850A1BE88CC100AFAA42 /* ColorInfo.swift */,
-				A47A86EF1BE76351009E1BD1 /* ColorListViewController.swift */,
-				A47A86F11BE774AA009E1BD1 /* ColorPropertyTableViewController.swift */,
-				A4F9AD201BE87B0000C21A4A /* HeiseiMinStd-W7.otf */,
-				A4C785081BE8827600AFAA42 /* DeepdeneBQ-Roman.otf */,
+				A49F571D1BFD6C3B007E4EEB /* Model */,
+				A49F57181BFD6BBC007E4EEB /* ViewController */,
+				A49F57111BFD6B5C007E4EEB /* Resources */,
 				A47A86E41BE761C3009E1BD1 /* Assets.xcassets */,
 				A47A86E61BE761C3009E1BD1 /* LaunchScreen.storyboard */,
 				A47A86E91BE761C3009E1BD1 /* Info.plist */,
 				A4EF7BB11BE8F67C00BF8CD2 /* ColorPicker-Bridging-Header.h */,
 			);
 			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		A49F57111BFD6B5C007E4EEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A49F57161BFD6B75007E4EEB /* 数据 */,
+				A49F57121BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf */,
+				A49F57131BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A49F57181BFD6BBC007E4EEB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49F57191BFD6BBC007E4EEB /* ColorListViewController.swift */,
+				A49F571A1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49F571D1BFD6C3B007E4EEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A49F571E1BFD6C3B007E4EEB /* ColorInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D7C58193A8946D1AFA25907F /* Frameworks */ = {
@@ -166,11 +190,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A47133D31BEA55EF00FCA2FC /* 数据 in Resources */,
+				A49F57141BFD6B5C007E4EEB /* DeepdeneBQ-Roman.otf in Resources */,
 				A47A86E81BE761C3009E1BD1 /* LaunchScreen.storyboard in Resources */,
-				A4C785091BE8827600AFAA42 /* DeepdeneBQ-Roman.otf in Resources */,
+				A49F57171BFD6B75007E4EEB /* 数据 in Resources */,
+				A49F57151BFD6B5C007E4EEB /* HeiseiMinStd-W7.otf in Resources */,
 				A47A86E51BE761C3009E1BD1 /* Assets.xcassets in Resources */,
-				A4F9AD211BE87B0000C21A4A /* HeiseiMinStd-W7.otf in Resources */,
 				A47A86E31BE761C3009E1BD1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,10 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4C7850B1BE88CC100AFAA42 /* ColorInfo.swift in Sources */,
-				A47A86F01BE76351009E1BD1 /* ColorListViewController.swift in Sources */,
+				A49F571C1BFD6BBC007E4EEB /* ColorPropertyTableViewController.swift in Sources */,
+				A49F571F1BFD6C3B007E4EEB /* ColorInfo.swift in Sources */,
+				A49F571B1BFD6BBC007E4EEB /* ColorListViewController.swift in Sources */,
 				A47A86DE1BE761C3009E1BD1 /* AppDelegate.swift in Sources */,
-				A47A86F21BE774AA009E1BD1 /* ColorPropertyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

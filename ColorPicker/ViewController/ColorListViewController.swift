@@ -13,12 +13,17 @@ class ColorListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblColorName: UILabel!
     
+    @IBOutlet weak var lblBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblWidthConstraint: NSLayoutConstraint!
+    
     var dataArr = [ColorInfo]()
+    
     // 隐藏 状态栏
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
+    // MARK: - Life cycle
     override func loadView() {
         super.loadView()
         let path = NSBundle.mainBundle().pathForResource("数据", ofType: nil)
@@ -38,44 +43,13 @@ class ColorListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateViewControllerWithIdentifier:@"LaunchScreen"];
-        //
-        //        UIView *launchView = viewController.view;
-        //        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-        //        UIWindow *mainWindow = delegate.window;
-        //        [mainWindow addSubview:launchView];
-        //
-        //        [UIView animateWithDuration:2.0f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        //        launchView.alpha = 0.0f;
-        //        launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.3f, 1.3f, 1.0f);
-        //        } completion:^(BOOL finished) {
-        //        [launchView removeFromSuperview];
-        //        }];
-        
-        
-        let VC = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewControllerWithIdentifier("LaunchScreen")
-        let launchView = VC.view
-        let mainWindow = UIApplication.sharedApplication().delegate?.window!!
-        mainWindow!.addSubview(launchView)
-        
-        UIView.animateWithDuration(2.0, animations: { () -> Void in
-            launchView.alpha = 0.0
-            launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.3, 1.3, 1.0)
-            }) { (finished) -> Void in
-                launchView.removeFromSuperview()
-        }
-        
+        // 添加 页面数据
         view.backgroundColor = UIColor(red: CGFloat(dataArr[0].RValue) / 255.0, green: CGFloat(dataArr[0].GValue) / 255.0, blue: CGFloat(dataArr[0].BValue) / 255.0, alpha: 1.0)
         lblColorName.text = dataArr[0].colorName
-        lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 43.0)
         
-        let overLayer = UIImageView()
-        overLayer.frame = UIScreen.mainScreen().bounds
-        overLayer.image = UIImage(named: "blurLayer")
-        overLayer.alpha = 0.4
-        view.insertSubview(overLayer, aboveSubview: lblColorName)
+        addOverLayer()
+        screenAdaptation()
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ColorPropertyTableViewController" {
@@ -83,9 +57,31 @@ class ColorListViewController: UIViewController {
             VC.colorInfo = dataArr[0]
         }
     }
+    
+    // MARK: - private method
+    private func screenAdaptation() {
+        // 愚蠢的版本适配
+        // TODO: - 考虑 用最小 约束 修改适配
+        if UIScreen.mainScreen().bounds.width == 320 {
+            lblWidthConstraint.constant = 60
+            lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 35.0)
+        } else {
+            lblBottomConstraint.constant = 20
+            lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 43.0)
+        }
+    }
+    
+    private func addOverLayer() {
+        let overLayer = UIImageView()
+        overLayer.frame = UIScreen.mainScreen().bounds
+        overLayer.image = UIImage(named: "blurLayer")
+        overLayer.alpha = 0.4
+        view.insertSubview(overLayer, aboveSubview: lblColorName)
+    }
 }
 
 private let CellIdentifier = "ColorCollectionViewCell"
+// MARK: - UICollectionViewDataSource
 extension ColorListViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataArr.count
@@ -93,10 +89,12 @@ extension ColorListViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! ColorCollectionViewCell
+        // 清空 cell 之前的 view 和 layer
+        // TODO: -  为了 VC 代码 简洁 这个可以写成 cell 的方法
         for view in cell.subviews {
             view.removeFromSuperview()
-            
         }
+        
         if let sublayer = cell.layer.sublayers {
             for layer in sublayer {
                 layer.removeFromSuperlayer()
@@ -108,27 +106,23 @@ extension ColorListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ColorListViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //        lblColorName.text = dataArr[indexPath.row].colorName
-        
+        // 系统自带动画 修改 lblColorName 的 透明度 文本 并且通知 下方 属性栏 开始动画
         UIView.animateWithDuration(1.2, animations: { () -> Void in
             self.lblColorName.alpha = 0.0
             }) { (finish) -> Void in
                 self.lblColorName.text = self.dataArr[indexPath.row].colorName
                 UIView.animateWithDuration(1.8, animations: { () -> Void in
                     self.lblColorName.alpha = 1.0
-                    
                     NSNotificationCenter.defaultCenter().postNotificationName("kChangeColorProperty", object: nil, userInfo: ["colorInfo" : self.dataArr[indexPath.row]])
                 })
         }
         
-        
-        
-        // 动画修改颜色
+        // POP 动画修改颜色
         let animation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
         animation.toValue = UIColor(red: CGFloat(dataArr[indexPath.row].RValue) / 255.0, green: CGFloat(dataArr[indexPath.row].GValue) / 255.0, blue: CGFloat(dataArr[indexPath.row].BValue) / 255.0, alpha: 1.0)
-        //        animation.toValue = UIColor(red: 144 / 255.0, green: 72 / 255.0, blue: 64 / 255.0, alpha: 1.0)
         animation.duration = 2.5
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.view.layer.pop_addAnimation(animation, forKey: nil)
@@ -136,25 +130,6 @@ extension ColorListViewController: UICollectionViewDelegate {
         collectionView.reloadItemsAtIndexPaths([indexPath])
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
