@@ -367,6 +367,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b1b99eba-9f5c-4bc5-83f7-0e363eebce7d";
 				SWIFT_OBJC_BRIDGING_HEADER = "ColorPicker/ColorPicker-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -383,6 +384,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b1b99eba-9f5c-4bc5-83f7-0e363eebce7d";
 				SWIFT_OBJC_BRIDGING_HEADER = "ColorPicker/ColorPicker-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
