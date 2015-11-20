@@ -12,7 +12,6 @@
 
 * iOS 8.0+
 * Xcode 6.0 or above
-* 不支持 3.5英寸 屏幕 😊😊
 
 ## App Store
 
