@@ -71,6 +71,9 @@ class ColorListViewController: UIViewController {
         if UIScreen.mainScreen().bounds.width == 320 {
             lblWidthConstraint.constant = 60
             lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 35.0)
+            if UIScreen.mainScreen().bounds.height == 480 {
+                lblColorName.hidden = true
+            }
         } else {
             lblBottomConstraint.constant = 20
             lblColorName.font = UIFont(name: "HeiseiMinStd-W7", size: 43.0)
