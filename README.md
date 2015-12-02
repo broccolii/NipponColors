@@ -15,7 +15,7 @@
 
 ## App Store
 
-已经提交啦 在等审核~
+[研色](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1055766323&mt=8)
 
 ## Gif
 ![Animation](Gif/Color.gif)
