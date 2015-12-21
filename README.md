@@ -1,6 +1,6 @@
 
 ## NipponColors
- 一款灵感来源于 [Nippon Colors](http://nipponcolors.com/) 的色卡 App
+ 一款源于 [Nippon Colors](http://nipponcolors.com/) 的色卡 App
 ## Features
 
 * 使用 Facebook 的 [pop](https://github.com/facebook/pop) 做出数字跳动的效果
